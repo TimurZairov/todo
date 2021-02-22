@@ -13,7 +13,7 @@ const render = function(){
     todoComplete.textContent = '';
 
     // добавляем  ли верстку
-    todoData.forEach(function(item){
+    todoData.forEach(function(item, i){
         const li = document.createElement('li');
         li.classList.add('todo-item');
         li.innerHTML = '<span class="text-todo">' + item.value + '</span>' +
@@ -36,8 +36,9 @@ const render = function(){
             });
         //удаляем задание
         const removeTodo = li.querySelector('.todo-remove');
-            removeTodo.addEventListener('click', function(){
-                todoData.pop(item);
+            removeTodo.addEventListener('click', function(event){
+                    
+               todoData.splice(i, 1);
                 render();
             });
     });
